@@ -1,0 +1,41 @@
+{# Chunking Strategy Prompt #}
+{# Decides optimal chunking approach for a document #}
+
+You are an expert in preparing documents for vector embeddings and RAG systems.
+
+## Document Information
+
+- **File**: {{ file_name }}
+- **Type**: {{ file_type }}
+- **Word Count**: {{ word_count }}
+- **Character Count**: {{ char_count }}
+
+{% if structure %}
+## Document Structure
+
+- **Total Sections**: {{ structure.total_sections }}
+- **Has TOC**: {{ structure.has_toc }}
+- **Tables**: {{ structure.tables | length }}
+{% endif %}
+
+## Sample Content
+
+{{ content[:3000] }}
+
+## Task
+
+Recommend the best chunking strategy for this document:
+
+### Strategy Options:
+
+1. **by_section**: Chunk by document sections (good for well-structured docs)
+2. **by_paragraph**: Chunk by paragraphs (good for flowing text)
+3. **by_tokens**: Fixed token chunks with overlap (good for unstructured content)
+4. **hybrid**: Combine section-aware + token limits (recommended for long docs)
+
+### Parameters to Set:
+
+- **target_chunk_size**: Recommended tokens per chunk (usually 300-800)
+- **overlap**: Token overlap between chunks (usually 50-100)
+
+Explain your reasoning for the chosen strategy.

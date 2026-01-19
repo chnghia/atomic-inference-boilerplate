@@ -100,7 +100,36 @@ python examples/langgraph_single_agent.py
 python examples/langgraph_multi_agent.py
 ```
 
+## Prefect Document Extraction
+
+```
+ORCHESTRATION LAYER (Prefect Flows)
+├── Load → ExtractMetadata → DiscoverStructure → Chunk
+        │          │               │              │
+        ▼          ▼               ▼              ▼
+EXECUTION LAYER (Atomic Inference)
+├── AtomicUnit(metadata.j2) → DocumentMetadata
+├── AtomicUnit(structure.j2) → DocumentStructure
+└── AtomicUnit(chunk.j2) → ContentChunk[]
+```
+
+### Supported Formats
+PDF, DOCX, HTML, Markdown
+
+### Examples
+
+```bash
+pip install prefect pymupdf python-docx beautifulsoup4 markdown-it-py
+
+# Single document
+python examples/prefect_pipelines/document_pipeline.py /path/to/doc.pdf
+
+# Batch processing
+python examples/prefect_pipelines/batch_pipeline.py /path/to/docs/ -o output/
+```
+
 ## Documentation
 
 See [docs/specs/](docs/specs/) for detailed specifications.
+
 

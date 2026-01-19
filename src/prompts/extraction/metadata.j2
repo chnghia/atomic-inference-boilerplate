@@ -1,0 +1,32 @@
+{# Metadata Extraction Prompt #}
+{# Uses AtomicUnit to extract structured metadata from document content #}
+
+You are a document analysis expert. Extract metadata from the following document.
+
+## Document Content
+
+{{ content[:8000] }}{% if content|length > 8000 %}
+
+[... content truncated, {{ content|length - 8000 }} more characters ...]
+{% endif %}
+
+{% if raw_sections %}
+## Detected Structure Hints
+
+The following section headings were detected:
+{% for section in raw_sections[:20] %}
+- Level {{ section.level }}: {{ section.title }}
+{% endfor %}
+{% endif %}
+
+## Extraction Instructions
+
+1. **Title**: Extract or infer the document title
+2. **Author**: Find author name if mentioned
+3. **Date**: Find creation or publication date (format: YYYY-MM-DD if possible)
+4. **Language**: Detect primary language (use ISO code: en, vi, ja, etc.)
+5. **Keywords**: Extract 3-7 key topics/keywords
+6. **Summary**: Write a 2-3 sentence summary of the document
+7. **Document Type**: Classify as: article, report, manual, email, presentation, code, other
+
+If information is not found, use null for optional fields.

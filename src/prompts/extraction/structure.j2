@@ -1,0 +1,35 @@
+{# Structure Discovery Prompt #}
+{# Analyzes document to discover hierarchical structure #}
+
+You are a document structure analyst. Analyze the following document and discover its organizational structure.
+
+## Document Content
+
+{{ content[:10000] }}{% if content|length > 10000 %}
+
+[... content truncated ...]
+{% endif %}
+
+{% if raw_sections %}
+## Pre-detected Headings
+
+These headings were detected by the document parser:
+{% for section in raw_sections %}
+- [L{{ section.level }}] {{ section.title }}
+{% endfor %}
+{% endif %}
+
+## Analysis Instructions
+
+1. **Sections**: Identify the hierarchical structure of sections
+   - Level 1: Main sections/chapters
+   - Level 2: Subsections
+   - Level 3+: Sub-subsections
+   
+2. **Tables**: Note any tables found (provide title if visible)
+
+3. **Table of Contents**: Does this document have a TOC?
+
+4. **Section Content**: For each section, extract a brief summary of what it contains
+
+Build a clean hierarchical structure that represents the document organization.

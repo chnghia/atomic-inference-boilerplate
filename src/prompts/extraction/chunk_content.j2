@@ -1,0 +1,43 @@
+{# Content Chunking Prompt #}
+{# Creates semantic chunks from document content #}
+
+You are preparing document content for vector embedding.
+
+## Chunking Parameters
+
+- **Strategy**: {{ strategy }}
+- **Target Size**: {{ target_chunk_size }} tokens per chunk
+- **Overlap**: {{ overlap }} tokens
+
+## Content to Chunk
+
+{% if section_title %}
+### Section: {{ section_title }}
+{% endif %}
+
+{{ content }}
+
+## Instructions
+
+Split this content into chunks following the strategy:
+
+{% if strategy == "by_section" %}
+- Keep each section as a separate chunk
+- If section is too long (>{{ target_chunk_size * 1.5 }} tokens), split at paragraph boundaries
+{% elif strategy == "by_paragraph" %}
+- Group paragraphs into chunks of ~{{ target_chunk_size }} tokens
+- Don't split paragraphs mid-sentence
+{% elif strategy == "by_tokens" %}
+- Create fixed-size chunks of {{ target_chunk_size }} tokens
+- Include {{ overlap }} token overlap between chunks
+- Try to split at sentence boundaries
+{% else %}
+- Respect section boundaries when possible
+- Split long sections at paragraph boundaries
+- Aim for {{ target_chunk_size }} tokens per chunk
+{% endif %}
+
+For each chunk, provide:
+1. The chunk content
+2. Chunk type (section, paragraph, table, mixed)
+3. Approximate word count
