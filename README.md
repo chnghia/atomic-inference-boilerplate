@@ -74,6 +74,7 @@ print(result)  # ExtractedEntity(name='Apple Inc.', entity_type='company')
 
 ## LangGraph Integration
 
+```
 ┌──────────────────────────────────────────┐
 │      ORCHESTRATION LAYER (LangGraph)     │
 │      Decides WHAT to do next             │
@@ -86,6 +87,7 @@ print(result)  # ExtractedEntity(name='Apple Inc.', entity_type='company')
 └──────────────────────────────────────────┘
 ```
 
+```
 ### Examples
 
 | Example | Pattern | Description |
