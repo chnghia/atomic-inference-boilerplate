@@ -1,0 +1,32 @@
+{# Entity Extraction Prompt Template #}
+
+Extract all entities from the following text.
+
+## Input Text
+
+{{ text }}
+
+{% if entity_types %}
+## Entity Types to Extract
+
+Focus on extracting these types of entities:
+{% for etype in entity_types %}
+- {{ etype }}
+{% endfor %}
+{% endif %}
+
+{% if memories %}
+## Additional Context
+
+{% for memory in memories %}
+- {{ memory.content }}
+{% endfor %}
+{% endif %}
+
+## Instructions
+
+1. Identify all entities in the text
+2. For each entity, determine its type
+3. Return a structured list of entities
+
+Respond with valid JSON only.
