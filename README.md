@@ -23,7 +23,7 @@ git clone <repo-url>
 cd atomic-inference-boilerplate
 
 # 2. Install dependencies
-conda activate docintel  # or your environment
+conda activate atomic  # or your environment
 pip install -r requirements.txt
 
 # 3. Configure environment

@@ -7,7 +7,7 @@ Demonstrates:
 - Model switching (change 1 string)
 
 Usage:
-    conda activate docintel
+    conda activate atomic
     python examples/basic.py
 """
 

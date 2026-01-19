@@ -16,7 +16,7 @@ Architecture:
                        └── [Respond] Final Answer
 
 Usage:
-    conda activate docintel
+    conda activate atomic
     pip install langgraph
     python examples/langgraph_single_agent.py
 """

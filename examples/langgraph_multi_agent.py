@@ -31,7 +31,7 @@ Architecture:
     └─────────────────────────────────────────────────────────────┘
 
 Usage:
-    conda activate docintel
+    conda activate atomic
     pip install langgraph
     python examples/langgraph_multi_agent.py
 """

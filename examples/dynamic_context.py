@@ -8,7 +8,7 @@ Demonstrates:
 - Complex context composition
 
 Usage:
-    conda activate docintel
+    conda activate atomic
     python examples/dynamic_context.py
 """
 

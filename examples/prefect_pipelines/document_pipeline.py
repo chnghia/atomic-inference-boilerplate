@@ -28,7 +28,7 @@ Architecture:
     └─────────────────────────────────────────────────────────────┘
 
 Usage:
-    conda activate docintel
+    conda activate atomic
     pip install prefect pymupdf python-docx beautifulsoup4 markdown-it-py
     python examples/prefect_pipelines/document_pipeline.py
 """

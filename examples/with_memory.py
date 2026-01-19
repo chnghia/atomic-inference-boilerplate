@@ -7,7 +7,7 @@ Demonstrates:
 - InMemoryVectorStore for testing
 
 Usage:
-    conda activate docintel
+    conda activate atomic
     python examples/with_memory.py
 """
 
