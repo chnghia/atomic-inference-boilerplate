@@ -87,7 +87,6 @@ print(result)  # ExtractedEntity(name='Apple Inc.', entity_type='company')
 └──────────────────────────────────────────┘
 ```
 
-```
 ### Examples
 
 | Example | Pattern | Description |
