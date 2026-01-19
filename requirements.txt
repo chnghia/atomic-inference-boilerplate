@@ -4,3 +4,6 @@ litellm>=1.0
 instructor>=1.0
 pydantic>=2.0
 python-dotenv>=1.0
+
+# LangGraph Integration (EPIC_002)
+langgraph>=0.2

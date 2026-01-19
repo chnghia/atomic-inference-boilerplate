@@ -72,6 +72,35 @@ result = extractor.run({"text": "Apple Inc. is a technology company."})
 print(result)  # ExtractedEntity(name='Apple Inc.', entity_type='company')
 ```
 
+## LangGraph Integration
+
+┌──────────────────────────────────────────┐
+│      ORCHESTRATION LAYER (LangGraph)     │
+│      Decides WHAT to do next             │
+└───────────────────┬──────────────────────┘
+                    │
+┌───────────────────▼──────────────────────┐
+│      EXECUTION LAYER (Atomic Inference)  │
+│      Decides HOW to think                │
+│      AtomicUnit: Render → Call → Validate│
+└──────────────────────────────────────────┘
+```
+
+### Examples
+
+| Example | Pattern | Description |
+|---------|---------|-------------|
+| `langgraph_single_agent.py` | ReAct | Single agent with tools using AtomicUnit for reasoning |
+| `langgraph_multi_agent.py` | Orchestrator-Router | Multiple specialized sub-agents, each with AtomicUnit |
+
+```bash
+# Run examples
+pip install langgraph
+python examples/langgraph_single_agent.py
+python examples/langgraph_multi_agent.py
+```
+
 ## Documentation
 
 See [docs/specs/](docs/specs/) for detailed specifications.
+

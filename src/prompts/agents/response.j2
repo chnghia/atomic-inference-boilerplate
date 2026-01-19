@@ -1,0 +1,20 @@
+{# Final Response Prompt #}
+{# Used to format the final answer after ReAct loop completes #}
+
+Based on the following information, provide a clear and helpful final answer.
+
+## User Question
+
+{{ question }}
+
+## Information Gathered
+
+{% for obs in observations %}
+- **{{ obs.action }}** ({{ obs.action_input }}): {{ obs.result }}
+{% endfor %}
+
+## Instructions
+
+1. Synthesize the information into a clear answer
+2. Cite the sources/tools used
+3. Be concise but comprehensive
