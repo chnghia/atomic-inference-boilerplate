@@ -74,7 +74,7 @@ def create_client(
     return client
 
 
-def call_llm(
+def single_call_llm(
     messages: list[dict],
     response_model: Type[T],
     model: str | None = None,
@@ -83,10 +83,10 @@ def call_llm(
     max_retries: int = 3,
 ) -> T:
     """
-    Make a single LLM call with structured output.
+    Make a single LLM call with structured output (for testing/simple cases).
     
-    This is a convenience function for simple use cases.
-    For more control, use create_client() directly.
+    This is a convenience function for simple use cases and testing.
+    For production, use AtomicUnit with templates instead.
     
     Args:
         messages: List of message dicts (role, content)
@@ -103,7 +103,7 @@ def call_llm(
         class Greeting(BaseModel):
             message: str
             
-        result = call_llm(
+        result = single_call_llm(
             messages=[{"role": "user", "content": "Say hello"}],
             response_model=Greeting
         )
@@ -124,3 +124,4 @@ def call_llm(
     )
     
     return response
+
